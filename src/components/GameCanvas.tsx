@@ -4,6 +4,7 @@ import { useEffect, useRef, useCallback } from 'react'
 import { GameRuntime } from '@/engine/runtime'
 import { Renderer } from '@/engine/renderer'
 import { InputHandler } from '@/engine/input'
+import { MobileControls } from './MobileControls'
 import type { GameConfig } from '@/engine/types'
 
 interface GameCanvasProps {
@@ -126,11 +127,21 @@ export function GameCanvas({ config, onGameEnd }: GameCanvasProps) {
   }, [config, gameLoop])
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="border-2 border-green-500 rounded-lg shadow-[0_0_20px_rgba(0,255,136,0.3)] max-w-full"
-      style={{ imageRendering: 'pixelated' }}
-      tabIndex={0}
-    />
+    <div className="w-full max-w-[800px]">
+      <div className="canvas-container">
+        <canvas
+          ref={canvasRef}
+          className="border-2 border-green-500 rounded-lg shadow-[0_0_20px_rgba(0,255,136,0.3)]"
+          style={{ imageRendering: 'pixelated' }}
+          tabIndex={0}
+        />
+      </div>
+      <MobileControls
+        onInput={(key, type) => {
+          if (type === 'down') inputRef.current.handleKeyDown(key)
+          else inputRef.current.handleKeyUp(key)
+        }}
+      />
+    </div>
   )
 }
