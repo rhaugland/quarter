@@ -5,6 +5,9 @@ import { GameCanvas } from '@/components/GameCanvas'
 import { GraveyardInput } from '@/components/GraveyardInput'
 import { Leaderboard } from '@/components/Leaderboard'
 import { Graveyard } from '@/components/Graveyard'
+import { CRTWrapper } from '@/components/CRTWrapper'
+import { CabinetFrame } from '@/components/CabinetFrame'
+import { Countdown } from '@/components/Countdown'
 import { generateScoreCard } from '@/lib/share'
 import { getOrCreateDeviceId } from '@/lib/auth'
 import type { GameConfig } from '@/engine/types'
@@ -114,13 +117,15 @@ export default function PlayPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black flex flex-col items-center gap-6 p-4 py-8">
+    <CRTWrapper className="min-h-screen bg-black flex flex-col items-center gap-6 p-4 py-8">
       <div className="text-center">
         <h1 className="text-green-400 font-mono text-3xl font-bold tracking-wider">QUARTER</h1>
         <p className="text-green-300/60 font-mono text-sm mt-1">#{config.dayNumber} — {config.theme.name}</p>
       </div>
 
-      <GameCanvas config={config} onGameEnd={handleGameEnd} />
+      <CabinetFrame title={config.theme.name} dayNumber={config.dayNumber}>
+        <GameCanvas config={config} onGameEnd={handleGameEnd} />
+      </CabinetFrame>
 
       {gameResult && (
         <div className="flex flex-col items-center gap-4 w-full max-w-md">
@@ -157,12 +162,16 @@ export default function PlayPage() {
           <div className="border-t border-green-500/20 w-full pt-4">
             <Graveyard dayNumber={config.dayNumber} />
           </div>
+
+          <div className="mt-6">
+            <Countdown />
+          </div>
         </div>
       )}
 
       <div className="text-green-300/40 font-mono text-xs">
         ARROWS/WASD to move · SPACE to jump
       </div>
-    </div>
+    </CRTWrapper>
   )
 }
