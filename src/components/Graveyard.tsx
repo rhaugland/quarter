@@ -46,14 +46,14 @@ export function Graveyard({ dayNumber }: GraveyardProps) {
   if (loading) return null
 
   if (entries.length === 0) {
-    return <div className="text-green-400/30 font-mono text-xs">THE GRAVEYARD IS EMPTY... FOR NOW.</div>
+    return <div className="text-pink-400/30 font-mono text-xs">THE GRAVEYARD IS EMPTY... FOR NOW.</div>
   }
 
   return (
     <div className="w-full max-w-md space-y-1">
-      <h3 className="text-green-400/60 font-mono text-xs uppercase tracking-wider mb-2">The Graveyard</h3>
+      <h3 className="text-pink-400/60 font-mono text-xs uppercase tracking-wider mb-2">The Graveyard</h3>
       {entries.map((entry) => (
-        <div key={entry.id} className="text-green-300/50 font-mono text-xs">
+        <div key={entry.id} className="text-pink-300/50 font-mono text-xs">
           💀 R{entry.roundReached} — &quot;{entry.message}&quot;
         </div>
       ))}

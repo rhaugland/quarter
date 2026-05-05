@@ -18,7 +18,7 @@ export function GraveyardInput({ onSubmit }: GraveyardInputProps) {
 
   if (submitted) {
     return (
-      <div className="text-green-400/60 font-mono text-sm">
+      <div className="text-pink-400/60 font-mono text-sm">
         💀 &quot;{message}&quot; — carved into the cabinet
       </div>
     )
@@ -32,14 +32,14 @@ export function GraveyardInput({ onSubmit }: GraveyardInputProps) {
         onChange={(e) => setMessage(e.target.value.slice(0, 100))}
         onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
         placeholder="leave your last words..."
-        className="flex-1 bg-black border border-green-500/50 text-green-400 font-mono text-sm
-                   px-3 py-2 placeholder:text-green-400/30 focus:outline-none focus:border-green-400"
+        className="flex-1 bg-black border border-pink-500/50 text-pink-400 font-mono text-sm
+                   px-3 py-2 placeholder:text-pink-400/30 focus:outline-none focus:border-pink-400"
       />
       <button
         onClick={handleSubmit}
         disabled={!message.trim()}
-        className="border border-green-500/50 text-green-400 font-mono text-sm px-4 py-2
-                   hover:bg-green-500/10 disabled:opacity-30 disabled:cursor-not-allowed"
+        className="border border-pink-500/50 text-pink-400 font-mono text-sm px-4 py-2
+                   hover:bg-pink-500/10 disabled:opacity-30 disabled:cursor-not-allowed"
       >
         CARVE
       </button>

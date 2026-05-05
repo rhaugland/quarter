@@ -15,10 +15,10 @@ export function Countdown() {
 
   return (
     <div className="text-center font-mono">
-      <div className="text-green-400/40 text-xs uppercase tracking-wider mb-1">
+      <div className="text-pink-400/40 text-xs uppercase tracking-wider mb-1">
         NEXT MACHINE IN
       </div>
-      <div className="text-green-400 text-2xl tracking-widest text-glow">
+      <div className="text-pink-400 text-2xl tracking-widest text-glow">
         {formatCountdown(seconds)}
       </div>
     </div>

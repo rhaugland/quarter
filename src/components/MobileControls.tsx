@@ -30,16 +30,16 @@ export function MobileControls({ onInput }: MobileControlsProps) {
       {/* Left/Right controls */}
       <div className="flex gap-2">
         <button
-          className="touch-btn w-16 h-16 border-2 border-green-500/60 rounded-lg
-                     flex items-center justify-center text-green-400 text-2xl font-mono"
+          className="touch-btn w-16 h-16 border-2 border-pink-500/60 rounded-lg
+                     flex items-center justify-center text-pink-400 text-2xl font-mono"
           onTouchStart={handleTouchStart('ArrowLeft')}
           onTouchEnd={handleTouchEnd('ArrowLeft')}
         >
           ←
         </button>
         <button
-          className="touch-btn w-16 h-16 border-2 border-green-500/60 rounded-lg
-                     flex items-center justify-center text-green-400 text-2xl font-mono"
+          className="touch-btn w-16 h-16 border-2 border-pink-500/60 rounded-lg
+                     flex items-center justify-center text-pink-400 text-2xl font-mono"
           onTouchStart={handleTouchStart('ArrowRight')}
           onTouchEnd={handleTouchEnd('ArrowRight')}
         >
@@ -49,8 +49,8 @@ export function MobileControls({ onInput }: MobileControlsProps) {
 
       {/* Jump button */}
       <button
-        className="touch-btn w-24 h-16 border-2 border-green-500/60 rounded-lg
-                   flex items-center justify-center text-green-400 text-sm font-mono ml-4"
+        className="touch-btn w-24 h-16 border-2 border-pink-500/60 rounded-lg
+                   flex items-center justify-center text-pink-400 text-sm font-mono ml-4"
         onTouchStart={handleTouchStart(' ')}
         onTouchEnd={handleTouchEnd(' ')}
       >

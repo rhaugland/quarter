@@ -13,22 +13,22 @@ function LeaderboardContent() {
   return (
     <div className="min-h-screen bg-black flex flex-col items-center gap-8 p-6">
       <div className="text-center">
-        <Link href="/" className="text-green-400 font-mono text-2xl font-bold tracking-wider hover:text-green-300">
+        <Link href="/" className="text-pink-400 font-mono text-2xl font-bold tracking-wider hover:text-pink-300">
           QUARTER
         </Link>
-        <p className="text-green-300/60 font-mono text-sm mt-1">DAY #{dayNumber}</p>
+        <p className="text-pink-300/60 font-mono text-sm mt-1">DAY #{dayNumber}</p>
       </div>
 
       <Leaderboard dayNumber={dayNumber} />
 
-      <div className="border-t border-green-500/20 w-full max-w-md" />
+      <div className="border-t border-pink-500/20 w-full max-w-md" />
 
       <Graveyard dayNumber={dayNumber} />
 
       <Link
         href="/play"
-        className="border border-green-500 text-green-400 font-mono text-sm px-6 py-2
-                   hover:bg-green-500/10 transition-colors mt-4"
+        className="border border-pink-500 text-pink-400 font-mono text-sm px-6 py-2
+                   hover:bg-pink-500/10 transition-colors mt-4"
       >
         PLAY TODAY&apos;S MACHINE
       </Link>
@@ -38,7 +38,7 @@ function LeaderboardContent() {
 
 export default function LeaderboardPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center"><span className="text-green-400 font-mono animate-pulse">LOADING...</span></div>}>
+    <Suspense fallback={<div className="min-h-screen bg-black flex items-center justify-center"><span className="text-pink-400 font-mono animate-pulse">LOADING...</span></div>}>
       <LeaderboardContent />
     </Suspense>
   )

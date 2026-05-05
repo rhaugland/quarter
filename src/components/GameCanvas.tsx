@@ -131,7 +131,7 @@ export function GameCanvas({ config, onGameEnd }: GameCanvasProps) {
       <div className="canvas-container">
         <canvas
           ref={canvasRef}
-          className="border-2 border-green-500 rounded-lg shadow-[0_0_20px_rgba(0,255,136,0.3)]"
+          className="border-2 border-pink-500 rounded-lg shadow-[0_0_20px_rgba(236, 72, 153,0.3)]"
           style={{ imageRendering: 'pixelated' }}
           tabIndex={0}
         />

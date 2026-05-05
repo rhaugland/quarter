@@ -47,7 +47,7 @@ export default async function CardPage({ params }: PageProps) {
 
       <Link
         href="/"
-        className="text-green-400/60 font-mono text-sm hover:text-green-400"
+        className="text-pink-400/60 font-mono text-sm hover:text-pink-400"
       >
         ← BACK TO QUARTER
       </Link>

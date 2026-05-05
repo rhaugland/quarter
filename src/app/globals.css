@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --quarter-green: #00ff88;
+  --quarter-pink: #ec4899;
   --quarter-dark: #0a0a0a;
-  --quarter-glow: rgba(0, 255, 136, 0.3);
+  --quarter-glow: rgba(236, 72, 153, 0.3);
   --crt-line-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
   background: var(--quarter-dark);
-  color: var(--quarter-green);
+  color: var(--quarter-pink);
   font-family: 'Courier New', monospace;
   -webkit-font-smoothing: none;
   -moz-osx-font-smoothing: unset;
@@ -78,7 +78,7 @@ body {
 .typewriter {
   overflow: hidden;
   white-space: nowrap;
-  border-right: 2px solid var(--quarter-green);
+  border-right: 2px solid var(--quarter-pink);
   animation: typing 2s steps(30) forwards, cursor-blink 0.7s step-end infinite;
 }
 
@@ -99,7 +99,7 @@ body {
 }
 
 .touch-btn:active {
-  background: rgba(0, 255, 136, 0.2);
+  background: rgba(236, 72, 153, 0.2);
   transform: scale(0.95);
 }
 
@@ -126,6 +126,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--quarter-green);
+  background: var(--quarter-pink);
   border-radius: 2px;
 }

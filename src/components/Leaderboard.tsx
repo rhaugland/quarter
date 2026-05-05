@@ -58,17 +58,17 @@ export function Leaderboard({ dayNumber, currentPlayerId }: LeaderboardProps) {
   }, [dayNumber, currentPlayerId])
 
   if (loading) {
-    return <div className="text-green-400/60 font-mono text-sm animate-pulse">LOADING SCORES...</div>
+    return <div className="text-pink-400/60 font-mono text-sm animate-pulse">LOADING SCORES...</div>
   }
 
   if (entries.length === 0) {
-    return <div className="text-green-400/40 font-mono text-sm">NO SCORES YET. BE THE FIRST.</div>
+    return <div className="text-pink-400/40 font-mono text-sm">NO SCORES YET. BE THE FIRST.</div>
   }
 
   return (
     <div className="w-full max-w-md">
       {playerRank && (
-        <div className="text-center text-green-400 font-mono text-sm mb-3">
+        <div className="text-center text-pink-400 font-mono text-sm mb-3">
           YOUR RANK: #{playerRank}
         </div>
       )}
@@ -77,7 +77,7 @@ export function Leaderboard({ dayNumber, currentPlayerId }: LeaderboardProps) {
           <div
             key={entry.rank}
             className={`flex justify-between font-mono text-sm px-2 py-1 ${
-              entry.rank <= 3 ? 'text-yellow-400' : 'text-green-300/80'
+              entry.rank <= 3 ? 'text-yellow-400' : 'text-pink-300/80'
             }`}
           >
             <span>

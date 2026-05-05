@@ -99,7 +99,7 @@ export default function PlayPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-green-400 font-mono text-2xl animate-pulse">
+        <div className="text-pink-400 font-mono text-2xl animate-pulse">
           GENERATING TODAY&apos;S MACHINE...
         </div>
       </div>
@@ -119,8 +119,8 @@ export default function PlayPage() {
   return (
     <CRTWrapper className="min-h-screen bg-black flex flex-col items-center gap-6 p-4 py-8">
       <div className="text-center">
-        <h1 className="text-green-400 font-mono text-3xl font-bold tracking-wider">QUARTER</h1>
-        <p className="text-green-300/60 font-mono text-sm mt-1">#{config.dayNumber} — {config.theme.name}</p>
+        <h1 className="text-pink-400 font-mono text-3xl font-bold tracking-wider">QUARTER</h1>
+        <p className="text-pink-300/60 font-mono text-sm mt-1">#{config.dayNumber} — {config.theme.name}</p>
       </div>
 
       <CabinetFrame title={config.theme.name} dayNumber={config.dayNumber}>
@@ -133,7 +133,7 @@ export default function PlayPage() {
             <p className="text-white text-xl">
               {gameResult.status === 'victory' ? '🏆 MACHINE CLEARED' : `💀 DIED IN ROUND ${gameResult.round}`}
             </p>
-            <p className="text-green-400 text-3xl font-bold mt-1">{gameResult.score.toLocaleString()}</p>
+            <p className="text-pink-400 text-3xl font-bold mt-1">{gameResult.score.toLocaleString()}</p>
             {streakInfo && (
               <p className="text-yellow-400/80 text-sm mt-2">
                 🔥 {streakInfo.currentStreak} day streak — {streakInfo.title}
@@ -144,8 +144,8 @@ export default function PlayPage() {
           <div className="flex gap-3">
             <button
               onClick={handleShare}
-              className="border border-green-500 text-green-400 font-mono text-sm px-6 py-2
-                         hover:bg-green-500/10 transition-colors"
+              className="border border-pink-500 text-pink-400 font-mono text-sm px-6 py-2
+                         hover:bg-pink-500/10 transition-colors"
             >
               {copied ? 'COPIED!' : 'SHARE'}
             </button>
@@ -155,11 +155,11 @@ export default function PlayPage() {
             <GraveyardInput onSubmit={handleGraveyardSubmit} />
           )}
 
-          <div className="border-t border-green-500/20 w-full pt-4 mt-2">
+          <div className="border-t border-pink-500/20 w-full pt-4 mt-2">
             <Leaderboard dayNumber={config.dayNumber} />
           </div>
 
-          <div className="border-t border-green-500/20 w-full pt-4">
+          <div className="border-t border-pink-500/20 w-full pt-4">
             <Graveyard dayNumber={config.dayNumber} />
           </div>
 
@@ -169,7 +169,7 @@ export default function PlayPage() {
         </div>
       )}
 
-      <div className="text-green-300/40 font-mono text-xs">
+      <div className="text-pink-300/40 font-mono text-xs">
         ARROWS/WASD to move · SPACE to jump
       </div>
     </CRTWrapper>
