@@ -1,6 +1,7 @@
 import type { GameConfig, GameState, PhysicsConfig, InputState } from './types'
 import { applyGravity, applyMovement, resolveCollisions } from './physics'
 import { calculateRoundScore } from './scoring'
+import { updateEnemies } from './enemies'
 
 export class GameRuntime {
   private config: GameConfig
@@ -67,6 +68,16 @@ export class GameRuntime {
 
     // Apply gravity
     newState = applyGravity(newState, physics)
+
+    // Update enemies
+    newState = {
+      ...newState,
+      entities: updateEnemies(
+        newState.entities,
+        { playerX: newState.playerX, playerY: newState.playerY },
+        800
+      ),
+    }
 
     // Resolve collisions
     newState = resolveCollisions(newState, this.config.player)
