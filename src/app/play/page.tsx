@@ -25,7 +25,7 @@ export default function PlayPage() {
   useEffect(() => {
     async function loadGame() {
       try {
-        const res = await fetch('/api/generate', { method: 'POST' })
+        const res = await fetch('/api/daily-game')
         if (!res.ok) throw new Error('Failed to generate game')
         const data = await res.json()
         setConfig(data.config)
