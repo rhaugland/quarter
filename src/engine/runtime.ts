@@ -88,6 +88,22 @@ export class GameRuntime {
       return
     }
 
+    // Check boundary death (falling off screen)
+    if (newState.playerY > 450 || newState.playerX < -50) {
+      this.state = { ...newState, status: 'dead' }
+      return
+    }
+
+    // Timer countdown
+    newState = {
+      ...newState,
+      timeRemaining: newState.timeRemaining - (1 / 60),
+    }
+    if (newState.timeRemaining <= 0) {
+      this.state = { ...newState, status: 'dead' }
+      return
+    }
+
     // Check goal
     const round = this.config.rounds[this.state.currentRound]
     if (round.goalX !== undefined && newState.playerX >= round.goalX) {

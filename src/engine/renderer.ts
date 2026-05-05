@@ -28,24 +28,64 @@ export class Renderer {
         case 'platform':
           this.ctx.fillStyle = theme.entityColors.platform
           this.ctx.fillRect(entity.x, entity.y, entity.width, entity.height)
+          // Top edge highlight
+          this.ctx.fillStyle = theme.entityColors.platform + '88'
+          this.ctx.fillRect(entity.x, entity.y, entity.width, 2)
           break
-        case 'enemy':
+        case 'enemy': {
+          const ex = entity.x, ey = entity.y, ew = entity.width, eh = entity.height
+          // Body
           this.ctx.fillStyle = theme.entityColors.enemy
-          this.ctx.fillRect(entity.x, entity.y, entity.width, entity.height)
-          // Draw "eyes" for personality
+          this.ctx.beginPath()
+          this.ctx.ellipse(ex + ew / 2, ey + eh / 2, ew / 2, eh / 2, 0, 0, Math.PI * 2)
+          this.ctx.fill()
+          // Eyes (animated wobble)
+          const wobble = Math.sin(Date.now() / 200) * 2
           this.ctx.fillStyle = '#fff'
-          this.ctx.fillRect(entity.x + 4, entity.y + 4, 6, 6)
-          this.ctx.fillRect(entity.x + entity.width - 10, entity.y + 4, 6, 6)
+          this.ctx.beginPath()
+          this.ctx.arc(ex + ew * 0.35, ey + eh * 0.35 + wobble, 4, 0, Math.PI * 2)
+          this.ctx.arc(ex + ew * 0.65, ey + eh * 0.35 + wobble, 4, 0, Math.PI * 2)
+          this.ctx.fill()
+          // Pupils
+          this.ctx.fillStyle = '#000'
+          this.ctx.beginPath()
+          this.ctx.arc(ex + ew * 0.35, ey + eh * 0.35 + wobble, 2, 0, Math.PI * 2)
+          this.ctx.arc(ex + ew * 0.65, ey + eh * 0.35 + wobble, 2, 0, Math.PI * 2)
+          this.ctx.fill()
+          // Angry mouth
+          this.ctx.strokeStyle = '#fff'
+          this.ctx.lineWidth = 2
+          this.ctx.beginPath()
+          this.ctx.moveTo(ex + ew * 0.3, ey + eh * 0.7)
+          this.ctx.lineTo(ex + ew * 0.5, ey + eh * 0.6)
+          this.ctx.lineTo(ex + ew * 0.7, ey + eh * 0.7)
+          this.ctx.stroke()
           break
+        }
         case 'obstacle':
+          // Spiky triangles
           this.ctx.fillStyle = theme.entityColors.enemy
-          this.ctx.fillRect(entity.x, entity.y, entity.width, entity.height)
+          const spikes = Math.floor(entity.width / 16)
+          for (let i = 0; i < spikes; i++) {
+            const sx = entity.x + i * (entity.width / spikes)
+            const sWidth = entity.width / spikes
+            this.ctx.beginPath()
+            this.ctx.moveTo(sx, entity.y + entity.height)
+            this.ctx.lineTo(sx + sWidth / 2, entity.y)
+            this.ctx.lineTo(sx + sWidth, entity.y + entity.height)
+            this.ctx.fill()
+          }
           break
         case 'collectible':
           this.ctx.fillStyle = '#ffdd00'
           this.ctx.beginPath()
           this.ctx.arc(entity.x + entity.width / 2, entity.y + entity.height / 2, entity.width / 2, 0, Math.PI * 2)
           this.ctx.fill()
+          // Sparkle
+          this.ctx.fillStyle = '#fff'
+          const sparkle = Math.sin(Date.now() / 150) * 2
+          this.ctx.fillRect(entity.x + entity.width / 2 - 1, entity.y + sparkle, 2, 6)
+          this.ctx.fillRect(entity.x + entity.width / 2 - 3, entity.y + sparkle + 2, 6, 2)
           break
       }
     }
@@ -60,8 +100,22 @@ export class Renderer {
     }
 
     // Draw player
+    const px = state.playerX, py = state.playerY, pw = player.width, ph = player.height
+    // Body
     this.ctx.fillStyle = theme.entityColors.player
-    this.ctx.fillRect(state.playerX, state.playerY, player.width, player.height)
+    this.ctx.beginPath()
+    this.ctx.roundRect(px + 2, py + 2, pw - 4, ph - 4, 6)
+    this.ctx.fill()
+    // Face
+    this.ctx.fillStyle = '#fff'
+    this.ctx.fillRect(px + 8, py + 10, 5, 5)
+    this.ctx.fillRect(px + pw - 13, py + 10, 5, 5)
+    // Smile
+    this.ctx.strokeStyle = '#fff'
+    this.ctx.lineWidth = 2
+    this.ctx.beginPath()
+    this.ctx.arc(px + pw / 2, py + ph * 0.55, 6, 0, Math.PI)
+    this.ctx.stroke()
 
     // Draw HUD
     this.drawHUD(state, config)
@@ -104,7 +158,7 @@ export class Renderer {
     this.ctx.fillStyle = 'rgba(0, 0, 0, 0.7)'
     this.ctx.fillRect(0, 0, this.width, this.height)
 
-    this.ctx.fillStyle = '#00ff88'
+    this.ctx.fillStyle = '#ec4899'
     this.ctx.font = 'bold 48px monospace'
     this.ctx.textAlign = 'center'
     this.ctx.fillText('CLEARED', this.width / 2, this.height / 2 - 20)
